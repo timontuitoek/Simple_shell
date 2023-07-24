@@ -13,7 +13,7 @@ void execmd(char **argv)
 {
 	char *command = NULL, *actual_cmd = NULL;
 
-	if (argv && argv[0])i
+	if (argv && argv[0])
 	{
 	command = argv[0];
 	actual_cmd = get_location(command);

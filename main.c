@@ -7,7 +7,7 @@
  */
 int main(int a, char **argv)
 {
-	char *prompt = "(Sshell)$ ";
+	char *prompt = "(shel)$ ";
 	char *lineptr = NULL, *copy_lineptr = NULL;
 	size_t n = 0;
 	ssize_t checkread;

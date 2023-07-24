@@ -26,4 +26,3 @@ void handleComment(char *string)
 			i++;
 	}
 }
-		
