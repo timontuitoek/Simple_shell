@@ -9,6 +9,7 @@
 int cd(char *directory)
 {
 	char *cwd = getcwd(NULL, 0);
+	char *new_cwd;
 
 	if (directory == NULL)
 	{
@@ -28,7 +29,7 @@ int cd(char *directory)
 		return (1);
 	}
 
-	char *new_cwd = getcwd(NULL, 0);
+	new_cwd = getcwd(NULL, 0);
 
 	if (new_cwd == NULL)
 	{
