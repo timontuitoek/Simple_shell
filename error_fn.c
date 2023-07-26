@@ -2,27 +2,27 @@
 
 /**
  * _errputs - Print a string to the standard error
- * @str: The string to be printed
+ * @str: string to be printed
  *
- * Return: The number of characters printed
+ * Return: number of characters printed
  */
 int _errputs(char *str)
 {
-	int i;
+	int k;
 
 	if (!(str))
 	{
 		return (0);
 	}
-	for (i = 0; str[i]; i++)
+	for (k = 0; str[k]; k++)
 	{
-		write(2, &str[i], 1);
+		write(2, &str[k], 1);
 	}
 
-	return (i);
+	return (k);
 }
 /**
- * print_error - Print an error message to the standard error
+ * print_error - Print error message to the standard error
  * @av: The array of command and arguments
  * @err: The error message to be printed
  */

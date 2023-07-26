@@ -43,14 +43,14 @@ void handle_env(char *user_input, data_shell *shell_data);
 
 char *_strtok(char *str, const char *delim);
 char *_strdup(char *dup, char *str);
-char *get_path(char *first_command);
+char *get_path(char *first_cd);
 
 
-char *prompt_read(ssize_t *fd_check);
-int execute_command(char **receive_argv);
-char **tokenization(char *take_user_input, char **argv, ssize_t fd_check);
+char *prompt_read(ssize_t *fdescriptor_check);
+int execute_command(char **get_argv);
+char **tokenize(char *take_input, char **argv, ssize_t fdescriptor_check);
 
-char *accept_user_input(void);
+char *accept_input(void);
 
 int main(int ac, char **argv);
 void (*get_command(char *cmd))(void);
@@ -72,7 +72,7 @@ char *_strchr(char *s, char c);
 int _strcspn(char *s, char *charset);
 int _strcmp(char *s, char *c);
 
-void exit_shell(char **receive_argv, int execution_status);
+void exit_shell(char **get_argv, int execution_status);
 int _atoi(char *s);
 
 void free_array(char **argv);

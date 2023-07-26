@@ -1,15 +1,16 @@
 #include "shell.h"
 
 /**
- * _strdup - returns a pointer to a newly allocated space in memory,
- * which contains a copy of the string given as a parameter.
- * @str: string copy to
+ * _strdup - returns a pointer to a newly allocated space in memory containing,
+ * a copy of the string given as a parameter.
+ * @str: string to copy to
  * @dup: string to copy
+ *
  * Return: pointer to the duplicated string.
  */
 char *_strdup(char *dup, char *str)
 {
-	int i, len;
+	int k, len;
 
 	if (str == NULL)
 		return (NULL);
@@ -22,9 +23,9 @@ char *_strdup(char *dup, char *str)
 	if (dup == NULL)
 		return (NULL);
 
-	for (i = 0; i < len; i++)
-		dup[i] = str[i];
-	dup[i] = '\0';
+	for (k = 0; k < len; k++)
+		dup[k] = str[k];
+	dup[k] = '\0';
 
 	return (dup);
 }
@@ -40,7 +41,7 @@ char *_strtok(char *str, const char *delim)
 {
 	static char *saveptr;
 	char *token;
-	int i, j, len;
+	int k, p, len;
 
 	if (str == NULL)
 		str = saveptr;
@@ -56,20 +57,20 @@ char *_strtok(char *str, const char *delim)
 	if (token == NULL)
 		return (NULL);
 
-	for (i = 0; str[i]; i++)
+	for (k = 0; str[k]; k++)
 	{
-		for (j = 0; delim[j]; j++)
+		for (p = 0; delim[p]; p++)
 		{
-			if (str[i] == delim[j])
+			if (str[k] == delim[p])
 			{
-				token[i] = '\0';
-				saveptr = &str[i + 1];
+				token[k] = '\0';
+				saveptr = &str[k + 1];
 				return (token);
 			}
 		}
-		token[i] = str[i];
+		token[k] = str[k];
 	}
-	token[i] = '\0';
+	token[k] = '\0';
 	saveptr = NULL;
 	return (token);
 }
@@ -82,7 +83,7 @@ char *_strtok(char *str, const char *delim)
  */
 char *_getenv(const char *name)
 {
-	int i, j, len;
+	int k, p, len;
 
 	if (name == NULL)
 		return (NULL);
@@ -91,15 +92,15 @@ char *_getenv(const char *name)
 	while (name[len])
 		len++;
 
-	for (i = 0; environ[i]; i++)
+	for (k = 0; environ[k]; k++)
 	{
-		for (j = 0; j < len; j++)
+		for (p = 0; p < len; p++)
 		{
-			if (environ[i][j] != name[j])
+			if (environ[k][p] != name[p])
 				break;
 		}
-		if (j == len && environ[i][j] == '=')
-			return (&environ[i][j + 1]);
+		if (p == len && environ[k][p] == '=')
+			return (&environ[k][p + 1]);
 	}
 
 	return (NULL);

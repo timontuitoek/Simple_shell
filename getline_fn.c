@@ -3,7 +3,7 @@
 /**
  * _getline - Read a line of input from standard input
  *
- * Return: The line of input (without the newline character) or NULL on failure
+ * Return: The line of input or NULL on failure
  */
 char *_getline(void)
 {

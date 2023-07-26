@@ -1,27 +1,27 @@
 #include "shell.h"
 
 /**
- * _env - shows all environ datas
- *
+ * _env - shows environ data
+ * @shell_data: data environment
  * @shell_data: the environ data
  * Return: when successful returns 1
  */
 int _env(data_shell *shell_data)
 {
-	int i = 0;
+	int k = 0;
 
-	while (shell_data->_environ[i])
+	while (shell_data->_environ[k])
 	{
-		int j = 0;
+		int p = 0;
 
-		while (shell_data->_environ[i][j])
+		while (shell_data->_environ[k][p])
 		{
-			write(STDOUT_FILENO, &shell_data->_environ[i][j], 1);
-			j++;
+			write(STDOUT_FILENO, &shell_data->_environ[k][p], 1);
+			p++;
 		}
 
 		write(STDOUT_FILENO, "\n", 1);
-		i++;
+		k++;
 	}
 
 	shell_data->status = 0;

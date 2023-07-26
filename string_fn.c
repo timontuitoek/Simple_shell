@@ -5,6 +5,7 @@
  * free_array - Frees a dynamically allocated array of strings.
  * @argv: The array of strings to be freed.
  *
+ * Return: 0 if successful
  */
 void free_array(char **argv)
 {
@@ -20,17 +21,18 @@ void free_array(char **argv)
 
 /**
  * s_len - counts the length of a string
- * @string: string whose length is to be counted
+ * @string: string whose length is to be countedi
+ *
  * Return: the length of the string
  */
 int s_len(char *string)
 {
-	int i;
+	int k;
 	int num;
 
 	num = 0;
 
-	for (i = 0; string[i] != '\0'; i++)
+	for (k = 0; string[k] != '\0'; k++)
 		num++;
 
 	return (num);
@@ -45,12 +47,12 @@ int s_len(char *string)
  */
 void s_copy(char *to, char *from)
 {
-	int i;
+	int k;
 
-	for (i = 0; from[i] != '\0'; i++)
-		to[i] = from[i];
+	for (k = 0; from[k] != '\0'; k++)
+		to[k] = from[k];
 
-	to[i] = '\0';
+	to[k] = '\0';
 }
 
 
@@ -62,14 +64,14 @@ void s_copy(char *to, char *from)
  */
 void s_cat(char *text_add, char *text)
 {
-	int i;
+	int k;
 	int num;
 
-	i = 0;
+	k = 0;
 	num = 0;
-	while (text_add[i] != '\0')
-		i++;
+	while (text_add[k] != '\0')
+		k++;
 	for (num = 0; text[num] != '\0'; num++)
-		text_add[i++] = text[num];
-	text_add[i] = '\0';
+		text_add[k++] = text[num];
+	text_add[k] = '\0';
 }

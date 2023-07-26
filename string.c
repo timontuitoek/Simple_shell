@@ -41,14 +41,14 @@ int _atoi(char *s)
  */
 char *_strchr(char *s, char c)
 {
-	int i = 0;
+	int k = 0;
 
-	for (; s[i] != c && s[i] != '\0'; i++)
+	for (; s[k] != c && s[k] != '\0'; k++)
 		;
 
-	if (s[i] == c)
+	if (s[k] == c)
 	{
-		return (s + i);
+		return (s + k);
 	}
 	else
 	{
@@ -65,11 +65,11 @@ char *_strchr(char *s, char c)
  */
 int _strcspn(char *s, char *charset)
 {
-	int count = 0, i;
+	int count = 0, k;
 
-	for (i = 0; s[i] != '\0'; i++)
+	for (k = 0; s[k] != '\0'; k++)
 	{
-		if (_strchr(charset, s[i]) != NULL)
+		if (_strchr(charset, s[k]) != NULL)
 		{
 			break;
 		}
@@ -89,15 +89,15 @@ int _strcspn(char *s, char *charset)
  */
 int _strcmp(char *s, char *c)
 {
-	int i;
+	int k;
 
-	for (i = 0; s[i] != '\0' && c[i] != '\0'; i++)
+	for (k = 0; s[k] != '\0' && c[k] != '\0'; k++)
 	{
-		if (s[i] != c[i])
+		if (s[k] != c[k])
 		{
-			return (s[i] - c[i]);
+			return (s[k] - c[k]);
 		}
 	}
 
-	return (s[i] - c[i]);
+	return (s[k] - c[k]);
 }

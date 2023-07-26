@@ -1,10 +1,10 @@
 #include "shell.h"
 /**
  * get_path - get the path of each command
- * @first_command: user input
+ * @first_cd: user input
  * Return: command path
  */
-char *get_path(char *first_command)
+char *get_path(char *first_cd)
 {
 	struct stat path_test;
 	char *cmd_path, *cmd_path_copy = NULL, *delimiter;
@@ -14,12 +14,12 @@ char *get_path(char *first_command)
 	delimiter = ":";
 	cmd_path = _getenv("PATH");
 
-	if (stat(first_command, &path_test) == 0)
-		return (first_command);
+	if (stat(first_cd, &path_test) == 0)
+		return (first_cd);
 
 	if (cmd_path)
 	{	cmd_path_copy = _strdup(cmd_path_copy, cmd_path);
-		length_user_command = s_len(first_command);
+		length_user_command = s_len(first_cd);
 		parse_token = _strtok(cmd_path_copy, delimiter);
 
 		while (parse_token != NULL)
@@ -32,7 +32,7 @@ char *get_path(char *first_command)
 				path_to_file[i] = '\0';
 			s_copy(path_to_file, parse_token);
 			s_cat(path_to_file, "/");
-			s_cat(path_to_file, first_command);
+			s_cat(path_to_file, first_cd);
 			s_cat(path_to_file, "\0");
 			if (stat(path_to_file, &path_test) == 0)
 			{	free(cmd_path_copy);
