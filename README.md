@@ -1,8 +1,1 @@
-# This file consists of those who contributed to this project by anymeans.The project was done
-by two people as listed below
-# For how Simple shell project was done you can
-see `hack/generate-authors.sh`.
-
-Nancy Kibon <nancykibon@gmail.com>
-Timon Tuitoek <tuitoektimon@gmail.com>
-
+A Unix shell is a command-line interpreter or shell that provides a command line user interface for Unix-like operating systems. The shell is both an interactive command language and a scripting language, and is used by the operating system to control the execution of the system using shell scripts.
