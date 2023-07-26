@@ -1,41 +1,49 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <unistd.h>
 #include "shell.h"
-
 /**
- * execmd - function to handle the command line
- * @argv: argument
- *
+ * execute_command - execute user's command
+ * @receive_argv: array to pointer of strings
+ * Return: nothing
  */
-void execmd(char **argv)
+int execute_command(char **receive_argv)
 {
-	char *command = NULL, *actual_cmd = NULL;
+	char *first_command, *final_cmd;
+	pid_t child_process;
+	int process_status = 0;
 
-	if (argv && argv[0])
+	first_command = NULL;
+	final_cmd = NULL;
+	child_process = -1;
+	first_command = receive_argv[0];
+	final_cmd = get_path(first_command);
+
+	if (final_cmd == NULL)
+		return (1);
+	if (receive_argv && access(final_cmd, X_OK) != -1)
 	{
-	command = argv[0];
-	actual_cmd = get_location(command);
+		child_process = fork();
 
-	if (strcmp(command, "exit") == 0)
-	{
-		exit(0);
-	}
+		if (child_process == -1)
+		{
+			print_error(receive_argv, "command not found\n");
+		}
+		else if (child_process == 0)
+		{
 
-	if (actual_cmd == NULL)
-	{
-		printf("Command '%s' not found.\n", command);
-		return;
-	}
+			if (execve(final_cmd, receive_argv, NULL) == -1)
+				print_error(receive_argv, "command not found\n");
 
-	if (execve(actual_cmd, argv, NULL) == -1)
-	{
-		perror("Oops! An error occurred.\n");
+		}
+		else
+		{
+			if (waitpid(child_process, &process_status, 0) == -1)
+				print_error(receive_argv, "command not found\n");
+		}
+		if (_strcmp(final_cmd, first_command) != 0)
+			free(final_cmd);
+		if (WIFEXITED(process_status))
+			process_status = WEXITSTATUS(process_status);
+		return (process_status);
 	}
-
-	/*Free allocated memory before exiting the function*/
-	free(actual_cmd);
-	}
+	free(final_cmd);
+	return (1);
 }
-
