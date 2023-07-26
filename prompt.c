@@ -15,7 +15,7 @@ char *prompt_read(ssize_t *fdescriptor_check)
 	/* interactive_mode() */
 	if (isatty(STDIN_FILENO))
 	{
-		write(STDOUT_FILENO, display_prompt, 2);
+		write(STDOUT_FILENO, display_prompt, 7);
 	}
 
 	input = _getline();

@@ -35,9 +35,9 @@ int _env(data_shell *shell_data)
  * @shell_data: Shell data structure
  */
 
-void handle_env(char *user_input, data_shell *shell_data)
+void handle_env(char *input, data_shell *shell_data)
 {
-	free(user_input);
+	free(input);
 	_env(shell_data);
 }
 

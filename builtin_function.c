@@ -8,7 +8,7 @@
  */
 void exit_shell(char **get_argv, int execution_status)
 {
-	char **commands = NULL;
+	char **cmds = NULL;
 	int k = 0, arg;
 	const char *error_message = "$: too many arguments\n";
 
@@ -19,7 +19,7 @@ void exit_shell(char **get_argv, int execution_status)
 		if (k == 1)
 		{
 			free_array(get_argv);
-			free(commands);
+			free(cmds);
 			exit(execution_status);
 		}
 		else if (k == 2)
@@ -34,7 +34,7 @@ void exit_shell(char **get_argv, int execution_status)
 			else
 			{
 				free_array(get_argv);
-				free(commands);
+				free(cmds);
 				exit(arg);
 			}
 		}
