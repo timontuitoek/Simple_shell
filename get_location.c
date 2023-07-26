@@ -46,5 +46,3 @@ char *get_location(char *cmd)
 	}
 	return (NULL);
 }
-
-				

@@ -28,7 +28,6 @@ int cd(char *directory)
 		free(cwd);
 		return (1);
 	}
-
 	new_cwd = getcwd(NULL, 0);
 
 	if (new_cwd == NULL)
