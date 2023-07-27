@@ -1,4 +1,6 @@
 #include "shell.h"
+#define MAX_ARGS 10
+#define MAX_ARG_LENGTH 100
 
 /**
  * split_line - Split a line into separate arguments

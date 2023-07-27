@@ -49,8 +49,8 @@ int _puts(char *str)
  * _getenv - Retrieves the value of the environment variable.
  * @name: The name of the environment variable.
  *
- * Return: On success, returns a pointer to the value associated with the
- * environment variable name. Otherwise, returns NULL.
+ * Return: On success, returns a pinter to the value associated with the
+ * environment variable name
  */
 char *_getenv(const char *name)
 {
@@ -75,7 +75,7 @@ char *_getenv(const char *name)
 
 /**
  * _fputc - Writes a single character to a stream
- * @c: The character to be written
+ * @d: The character to be written
  * @stream: The stream to which the character should be written.
  *
  * Return: The number of characters written, or EOF on error.

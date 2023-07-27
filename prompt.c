@@ -6,7 +6,7 @@
  */
 void print_prompt(void)
 {
-	char *prompt = "($) ";
+	char *prompt = "$Shell ";
 
 	if (isatty(STDIN_FILENO))
 		write(STDOUT_FILENO, prompt, _strlen(prompt));

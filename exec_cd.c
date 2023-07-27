@@ -76,5 +76,44 @@ int execute_env(void)
 int execute_command(char **args)
 {
 	int status;
-	char *cmd_path = get_command_path(args[0]);
+	char *command_path = get_command_path(args[0]);
+
+	if (command_path != NULL)
+	{
+		pid_t child_pid = fork();
+
+		if (child_pid == 0)
+		{
+			if (execve(command_path, args, environ) == -1)
+			{
+				perror("execve");
+				exit(-1);
+			}
+		}
+		else if (child_pid < 0)
+		{
+			perror("fork");
+			exit(-1);
+		}
+		else
+		{
+			wait(&status);
+			free(command_path);
+			if (WIFEXITED(status))
+				status = WEXITSTATUS(status);
+			if (!isatty(STDIN_FILENO))
+				return (status);
+		}
+	}
+	else
+	{
+		_fputs(program_name, stdout);
+		_fputs(": 1: ", stdout);
+		_fputs(args[0], stdout);
+		_fputs(": not found", stdout);
+		_fputc('\n', stdout);
+	}
+
+	return (0);
+}
 
