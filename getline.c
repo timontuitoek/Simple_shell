@@ -30,9 +30,7 @@ char **split_line(char *line)
 		{
 			perror("malloc failed");
 			for (p = 0; p < k; p++)
-			{
 				free(args[p]);
-			}
 			free(args);
 			return (NULL);
 		}
@@ -54,19 +52,13 @@ char **split_line(char *line)
 int handle_semicolon(char *line)
 {
 	char **commands = split_line(line);
-	int k;
+	int k, status = 0;
 
-	for (k = 0; commands[k] != NULL; k++)
-	{
-		int status = execute((char **)commands[k]);
-
-		if (status != 0)
-		{
-			return (status);
-		}
-	}
+	for (k = 0; commands[k] != NULL && status == 0; k++)
+		status = execute((char **)commands[k]);
 
 	free_args(commands);
 
-	return (0);
+	return (status);
 }
+
