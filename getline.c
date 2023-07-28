@@ -1,12 +1,9 @@
 #include "shell.h"
 #define MAX_ARGS 10
 #define MAX_ARG_LENGTH 100
-
 /**
  * split_line - Split a line into separate arguments
- *
  * @line: The line to be split
- *
  * Return: Array of strings containing the arguments
  */
 char **split_line(char *line)
@@ -20,10 +17,9 @@ char **split_line(char *line)
 	if (args == NULL)
 	{
 		perror("malloc failed");
-		exit(EXIT_FAILURE);
-	}
-
-	for (arg = strtok(line, DELIM); arg != NULL && k < MAX_ARGS; arg = strtok(NULL, DELIM))
+		exit(EXIT_FAILURE); }
+	for (arg = strtok(line, DELIM);
+		arg != NULL && k < MAX_ARGS; arg = strtok(NULL, DELIM))
 	{
 		args[k] = malloc((MAX_ARG_LENGTH + 1) * sizeof(char));
 		if (args[k] == NULL)
@@ -32,17 +28,12 @@ char **split_line(char *line)
 			for (p = 0; p < k; p++)
 				free(args[p]);
 			free(args);
-			return (NULL);
-		}
-
+			return (NULL); }
 		_strncpy(args[k], arg, MAX_ARG_LENGTH);
 		args[k][MAX_ARG_LENGTH] = '\0';
-		k++;
-	}
+		k++; }
 	args[k] = NULL;
-	return (args);
-}
-
+	return (args); }
 /**
  * handle_semicolon - Handles the semicolon operator in a line of code.
  * @line: The input line to process.
@@ -56,9 +47,6 @@ int handle_semicolon(char *line)
 
 	for (k = 0; commands[k] != NULL && status == 0; k++)
 		status = execute((char **)commands[k]);
-
 	free_args(commands);
-
-	return (status);
-}
+	return (status); }
 

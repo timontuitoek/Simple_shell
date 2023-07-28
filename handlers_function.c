@@ -1,5 +1,4 @@
 #include "shell.h"
-
 /**
  * _fputs - Custom implementation of fputs function
  * @str: String to be printed
@@ -13,13 +12,10 @@ int _fputs(const char *str, FILE *stream)
 
 	if (str == NULL)
 		return (-1);
-
 	for (k = 0; str[k] != '\0'; k++)
 	{
 		fputc(str[k], stream);
-		count++;
-	}
-
+		count++; }
 	return (count);
 }
 
@@ -35,16 +31,12 @@ int _puts(char *str)
 
 	if (str == NULL)
 		return (-1);
-
 	for (k = 0; str[k] != '\0'; k++)
 	{
 		_putchar(str[k]);
-		count++;
-	}
-
+		count++; }
 	return (count);
 }
-
 /**
  * _getenv - Retrieves the value of the environment variable.
  * @name: The name of the environment variable.
@@ -60,19 +52,16 @@ char *_getenv(const char *name)
 
 	if (name == NULL || name_length == 0)
 		return (NULL);
-
 	for (k = 0; environ[k] != NULL; k++)
 	{
-		if (strncmp(name, environ[k], name_length) == 0 && environ[k][name_length] == '=')
+		if (strncmp(name, environ[k], name_length) == 0
+		&& environ[k][name_length] == '=')
 		{
 			value = environ[k] + name_length + 1;
-			break;
-		}
+			break; }
 	}
-
 	return (value);
 }
-
 /**
  * _fputc - Writes a single character to a stream
  * @d: The character to be written
@@ -86,9 +75,7 @@ int _fputc(int d, FILE *stream)
 
 	buf[0] = d;
 
-	return (fwrite(buf, 1, 1, stream));
-}
-
+	return (fwrite(buf, 1, 1, stream)); }
 /**
  * _strcat - Concatenates two strings.
  * @dest: The destination string.
@@ -106,6 +93,5 @@ char *_strcat(char *dest, const char *src)
 
 	dest[dest_len + k] = '\0';
 
-	return (dest);
-}
+	return (dest); }
 

@@ -5,7 +5,6 @@
 /**
  * get_command_path - Get the full path of a command using the PATH variable
  * @command: Command to find
- *
  * Return: Full path of the command if found, NULL otherwise
  */
 char *get_command_path(char *command)
@@ -14,16 +13,14 @@ char *get_command_path(char *command)
 
 	if (_strchr(command, '/') != NULL)
 	{
-		return (_strdup(command));
-	}
+		return (_strdup(command)); }
 
 	path = _getenv("PATH");
 
 	if (path == NULL)
 	{
 		write(STDERR_FILENO, "Error retrieving PATH variable\n", 31);
-		return (NULL);
-	}
+		return (NULL); }
 
 	tokenize = strtok(path, ":");
 
@@ -36,8 +33,7 @@ char *get_command_path(char *command)
 		{
 			write(STDERR_FILENO, "Allocation error\n", 17);
 			free(dir);
-			return (NULL);
-		}
+			return (NULL); }
 
 		_strcpy(full_path, dir);
 		_strcat(full_path, "/");
@@ -46,14 +42,10 @@ char *get_command_path(char *command)
 		if (access(full_path, X_OK) == 0)
 		{
 			free(dir);
-			return (full_path);
-		}
-
+			return (full_path); }
 		free(full_path);
 		free(dir);
-		tokenize = strtok(NULL, ":");
-	}
-
+		tokenize = strtok(NULL, ":"); }
 	return (NULL);
 }
 
@@ -61,7 +53,6 @@ char *get_command_path(char *command)
  * build_command_path - Build the full path of a command
  * @directory: Directory to prepend to the command
  * @command: Command to append to the directory
- *
  * Return: Full path of the command
  */
 char *build_command_path(char *directory, char *command)
@@ -74,8 +65,7 @@ char *build_command_path(char *directory, char *command)
 	if (path == NULL)
 	{
 		write(STDERR_FILENO, "Allocation error\n", 17);
-		exit(EXIT_FAILURE);
-	}
+		exit(EXIT_FAILURE); }
 
 	_strncpy(path, directory, directory_length);
 	path[directory_length] = '/';
